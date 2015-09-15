@@ -1,44 +1,19 @@
 package nameless.cubes;
 
 import nameless.enumeration.EnumColour;
+import nameless.enumeration.EnumCubeFaceDirection;
 
 public class MiniCube
 {
-	public EnumColour colour1;
-	public EnumColour colour2;
-	public EnumColour colour3;
+	public EnumColour[] cubeFaces;
 	
 	MiniCube(EnumColour c1)
 	{
-		colour1 = c1;
+		cubeFaces = new EnumColour[6];
 	}
-	
-	MiniCube(EnumColour c1, EnumColour c2)
+
+	public EnumColour getFaceColour(int index)
 	{
-		colour1 = c1;
-		colour2 = c2;
-	}
-	
-	MiniCube(EnumColour c1, EnumColour c2, EnumColour c3)
-	{
-		colour1 = c1;
-		colour2 = c2;
-		colour3 = c3;
-	}
-	
-	public int getCubeFaceNumber()
-	{
-		if (colour2 == null)
-		{
-			return 1;
-		}
-		else if(colour3 == null)
-		{
-			return 2;
-		}
-		else
-		{
-			return 3;
-		}
+		return cubeFaces[index];
 	}
 }
