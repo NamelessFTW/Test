@@ -1,7 +1,6 @@
 package nameless.cubes;
 
 import nameless.enumeration.EnumColour;
-import nameless.enumeration.EnumCubeFaceDirection;
 
 public class MiniCube
 {
@@ -12,8 +11,11 @@ public class MiniCube
 		cubeFaces = new EnumColour[6];
 	}
 
+	//1 is north, 2 south, 3 east, 4 west, 5 top, 6 bottom
 	public EnumColour getFaceColour(int index)
 	{
 		return cubeFaces[index];
 	}
+	
+	
 }

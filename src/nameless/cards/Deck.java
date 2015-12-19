@@ -48,8 +48,85 @@ public class Deck
 	{
 		for (int i = 0; i < deck.length; i++)
 		{
-			System.out.println(deck[i].enumNumber.displayName + deck[i].enumSuit.displayName);
+			System.out.println(deck[i].enumNumber.getDisplayName() + deck[i].enumSuit.getDisplayName() + " " + deck[i].getCardSortValue());
 		}
+	}
+	
+	public void printDeck(Card[] deck)
+	{
+		for (int i = 0; i < deck.length; i++)
+		{
+			System.out.println(deck[i].enumNumber.getDisplayName() + deck[i].enumSuit.getDisplayName() + " " + deck[i].getCardSortValue());
+		}
+	}
+	
+	public void sortDeck()
+	{
+		deck = mergeSort(deck);
+	}
+	
+	public Card[] mergeSort(Card[] start)
+	{
+		Card[] left = new Card[start.length/2];
+		Card[] right = new Card[start.length-left.length];
+		Card[] sorted = new Card[start.length];
+		
+		for (int i = 0; i < left.length; i++)
+		{
+			left[i] = start[i];
+		}
+		for (int i = 0; i < right.length; i++)
+		{
+			right[i] = start[left.length + i];
+		}
+		
+		if (left.length>1)
+		{
+			mergeSort(left);
+		}
+		if (right.length>1)
+		{
+			mergeSort(right);
+		}
+		
+		sorted = merge(left, right);
+		return sorted;
+	}
+	
+	public Card[] merge(Card[] array1, Card[] array2)
+	{
+		Card[] merged = new Card[array1.length + array2.length];
+		int index1 = 0;
+		int index2 = 0;
+		
+		while (merged[merged.length-1] == null)
+		{
+			if(index1 < array1.length && index2 < array2.length && array1[index1].getCardSortValue() <= array2[index2].getCardSortValue())
+			{
+				System.out.println(array1[index1].getCardSortValue() + " " + array2[index2].getCardSortValue() + "  //  ");
+				merged[index1 + index2] = array1[index1];
+				index1++;
+			}
+			else if(index1 < array1.length && index2 < array2.length && array1[index1].getCardSortValue() >= array2[index2].getCardSortValue())
+			{
+				System.out.println(array1[index1].getCardSortValue() + " " + array2[index2].getCardSortValue() + "  \\\\  ");
+				merged[index1 + index2] = array2[index2];
+				index2++;
+			}
+			else if(index1>=array1.length)
+			{
+				merged[index1 + index2] = array2[index2];
+				index2++;
+			}
+			else if(index2>=array2.length)
+			{
+				merged[index1 + index2] = array1[index1];
+				index1++;
+			}
+			System.out.println(merged[index1 + index2-1].getCardSortValue() + "  ");
+		}
+		
+		return merged;
 	}
 	
 }

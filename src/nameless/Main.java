@@ -8,5 +8,8 @@ public class Main
 	{
 		Deck testdeck = new Deck();
 		testdeck.printDeck();
+		testdeck.sortDeck();
+		System.out.println(" ");
+		testdeck.printDeck();
 	}
 }

@@ -52,4 +52,9 @@ public class Card
 		default: return EnumCardSuit.SPADES;
 		}
 	}
+	
+	public int getCardSortValue()
+	{
+		return enumNumber.getValue() + enumSuit.getSortValue()*13;
+	}
 }

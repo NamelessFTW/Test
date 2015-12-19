@@ -16,8 +16,8 @@ public enum EnumCardNumber
 	QUEEN("Queen of ", 12),
 	KING("King of ", 13);
 	
-	public String displayName;
-	public int value;
+	private String displayName;
+	private int value;
 	
 	EnumCardNumber(String dN, int v)
 	{
@@ -25,5 +25,13 @@ public enum EnumCardNumber
 		value = v;
 	}
 	
+	public String getDisplayName()
+	{
+		return displayName;
+	}
 	
+	public int getValue()
+	{
+		return value;
+	}
 }
